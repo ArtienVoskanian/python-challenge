@@ -1,1 +1,2 @@
 # python-challenge
+I asked BSC learning assistant to help me on how I would approach exporting and writing a txt file of my code. I was sent the slides from class that specify on how to write rows and set up output paths. I already had this information in my notes and no code was given for me to copy or anything like that. But it did help me realize the answer I was looking for was plainly right in front of me the whole time. Classic. 
