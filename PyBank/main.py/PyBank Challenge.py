@@ -18,6 +18,7 @@ greatest_decrease = 0
 
 #Set up a filepath that references the budget_data.csv
 #Open and read budget_data.csv
+#Skip the header so only relevant data is used
 
 csvpath = os.path.join("..","Resources","budget_data.csv")
 with open(csvpath,encoding='utf-8') as csvfile:
@@ -49,9 +50,9 @@ with open(csvpath,encoding='utf-8') as csvfile:
         
 #Greatest increase in profits during the time period. Must print out the date of when that was, as well as the value itself
 #Greatest decrease in profits. Print out the date of when that was and the value.
-#Can calculate these two at the same time since we are looking at the same list for both
-#Must add a + 1 to the indexes for the total_months list so it matches the monthly_flux index since its indexes are shifted up 1
-#This relative shift is due to how we calculated the values stored in the monthly_flux list above 
+#We can calculate these two at the same time since we are looking at the same list for both
+#Must add a + 1 to the indexes for the total_months lists so that it matches the monthly_flux index
+#This relative shift in the monthly_flux index is due to how we calculated the values stored in list above 
 
     for x in range(len(monthly_flux)-1):
         if monthly_flux[x] > monthly_flux[x+1] and monthly_flux[x] > greatest_increase:
@@ -71,3 +72,13 @@ with open(csvpath,encoding='utf-8') as csvfile:
             
            
 #Analysis must be printed to terminal AND exported to a txt file
+output_path = os.path.join("..","Analysis","Pybank Challenge Txt File")
+with open(output_path,'w') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(["Financial Analysis"])
+    csvwriter.writerow(["------------------------"])
+    csvwriter.writerow([f"Total Months: {len(total_months)}"])
+    csvwriter.writerow([f"Average: ${average}"])
+    csvwriter.writerow([f"Greatest Increase: {greatest_increase_date} (${greatest_increase})"])
+    csvwriter.writerow([f"Greatest Decrease: {greatest_decrease_date} (${greatest_decrease})"])
+    
